@@ -35,7 +35,7 @@ def recursivWonder(htmlElement, eventCssClass, website, depth_limes=0 ):
                     if (date_addr != None) and len(date_addr)>1:
                         date_addr= re.sub(r'\r*\n*\t*(  )*', '',date_addr)
                         if not ((date_addr in date_addrSet) and (title in titleSet)): 
-                            data={"date_addr": date_addr, "title": title}
+                            data={"title": title, "date_addr": date_addr}
                             dataLst.append(data)
                             #print(date_addr)                
                             scraperwiki.sqlite.save(unique_keys=[], data=data, table_name="events")
@@ -94,12 +94,12 @@ prtclAndHst = '{uri.scheme}://{uri.netloc}'.format(uri=parsed_uri)
 #
 # # Find something on the page 
 root = lxml.html.fromstring(html)
-print(root)
+# print(root)
 hamburgerElements=root.cssselect(hamburgerElementsClass)
-print(hamburgerElements)
+# print(hamburgerElements)
 buttons= hamburgerElements[0].cssselect('a') 
 #buttons = getBtnsIfNoClassXOnPage(root, searchedHtmlElement, True)
-print(len(buttons))
+# print(len(buttons))
 # for x in buttons:
 #     print(x.get('href'))
 # print(buttons[0].get('href'))
@@ -116,7 +116,7 @@ for x in xrange(len(buttons)):
                 scrapedPages += 1
                 searchedItemsFound += recursivWonder(page2, searchedHtmlElement, nextLink)
 print("Result: "+str(scrapedPages)+"pages Scraped, found "+str(searchedItemsFound)+'Items, dropped '+str(searchedItemsDropped)+'Items, ')
-print(titleSet)
+# print(titleSet)
 # titleList = list(titleSet)
 # date_addrList = list(date_addrSet)
 # events=list()
