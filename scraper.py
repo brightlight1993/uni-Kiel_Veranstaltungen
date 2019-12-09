@@ -6,10 +6,7 @@ import lxml.html
 import cssselect
 import re
 import json
-from twisted.plugins.twisted_trial import Tree
-from urlparse import urlparse # for Python2 else 
-from hyperlink._url import NoneType
-from twisted.conch.insults.window import Button
+from urlparse import urlparse # for Python2 else below
 # from urllib.parse import urlparse  # for Python3
 
 
